@@ -1,31 +1,25 @@
 package laboratorio;
-import java.io.File;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 
 public class Archivo implements ItemArchivo{
     
-    File archivo;
     String nombre;
+    double peso;
     
+    public Archivo(String nombre, double peso) {
+        this.nombre = nombre;
+        this.peso = peso;
+    }
+   
     @Override
     public double getPeso() {
-        return archivo.length();
+        return this.peso;
     }
 
     @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.nombre;
     }
-
-    @Override
-    public void mostrar() {
-        
-    }
-
-
-    
-    
-
     
 }
