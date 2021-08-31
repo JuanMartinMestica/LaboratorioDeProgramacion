@@ -23,6 +23,6 @@ public class Archivo implements ItemArchivo {
 
     @Override
     public String toString() {
-        return "Nombre archivo: " + this.nombre + "| Peso: " + this.peso;
+        return "----- [Archivo] " + this.nombre + "| Peso: " + this.peso;
     }
 }
