@@ -8,6 +8,7 @@ public interface ItemArchivo {
     
     public double getPeso();
     public String getNombre();
-    public void mostrar();
+    @Override
+    public String toString();
     
 }
