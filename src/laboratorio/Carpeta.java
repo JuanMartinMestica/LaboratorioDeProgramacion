@@ -27,7 +27,7 @@ public class Carpeta implements ItemArchivo {
             msg += "--------" + item.mostrar() + "\n";
         }
 
-        msg += "Peso total de carpeta: " + this.getPeso() + " bytes.";
+        msg += "Peso total de carpeta: " + String.format("%.2f",this.getPeso() / 1024 / 1024) + " MB.";
 
         return msg;
     }
@@ -76,6 +76,7 @@ public class Carpeta implements ItemArchivo {
         return this.items;
     }
 
+    @Override
     public String mostrar() {
         return "[Carpeta] " + this.nombre;
     }
