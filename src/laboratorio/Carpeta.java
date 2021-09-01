@@ -1,6 +1,7 @@
 package laboratorio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 public class Carpeta implements ItemArchivo {
@@ -15,7 +16,7 @@ public class Carpeta implements ItemArchivo {
 
     @Override
     public String getNombre() {
-        return "----- [Carpeta] " + this.nombre ;
+        return this.nombre;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class Carpeta implements ItemArchivo {
         String msg = "[CARPETA] " + this.nombre + "\n";
 
         for (ItemArchivo item : items) {
-            msg += item.getNombre() + "\n";
+            msg += "--------" + item.getNombre() + "\n";
         }
 
         msg += "Peso total de carpeta: " + this.getPeso();
@@ -52,4 +53,23 @@ public class Carpeta implements ItemArchivo {
         return this.items.size();
     }
 
+    public Carpeta obtenerSubcarpeta(String nombreSubcarpeta) {
+
+        int i = 0;
+        boolean seguir = true;
+        Carpeta subcarpeta = null;
+
+        while (i < items.size() && seguir) {
+           
+            if (items.get(i).getNombre().equals(nombreSubcarpeta)) {
+
+                seguir = false;
+                subcarpeta = (Carpeta) items.get(i);
+        
+            }
+            i++;
+        }
+     
+        return subcarpeta;
+    }
 }
