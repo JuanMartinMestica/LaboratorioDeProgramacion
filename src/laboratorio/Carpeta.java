@@ -3,7 +3,6 @@ package laboratorio;
 import java.util.ArrayList;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
-
 public class Carpeta implements ItemArchivo {
 
     String nombre;
@@ -29,27 +28,28 @@ public class Carpeta implements ItemArchivo {
         }
 
         msg += "Peso total: " + this.getPeso();
-        
+
         return msg;
     }
-    
+
     @Override
     public double getPeso() {
-        
+
         double pesoTotal = 0;
-        
-        for (ItemArchivo item: items) {
+
+        for (ItemArchivo item : items) {
             pesoTotal += item.getPeso();
         }
-        
+
         return pesoTotal;
     }
-    
 
     public void añadirItem(ItemArchivo item) {
         items.add(item);
     }
 
-    
+    public int getCantHijos() {
+        return this.items.size();
+    }
 
 }
