@@ -27,14 +27,13 @@ public class Laboratorio {
                 case 1:
 
                     Carpeta subcarpeta = accederSubcarpeta(carpetaActual);
-                   
+
                     //Si existe la subcarpeta requerida
-                    if(subcarpeta != null) {
-                        
+                    if (subcarpeta != null) {
                         //Se apila la carpeta padre 
                         visitados.apilar(carpetaActual);
                         carpetaActual = subcarpeta;
-                        
+
                     } else {
                         //Si no existe subcarpeta, da error y desapila la carpeta actual
                         System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
@@ -42,15 +41,11 @@ public class Laboratorio {
                     break;
                 case 2:
                     if (!visitados.esVacia()) {
-                      
                         carpetaActual = (Carpeta) visitados.obtenerTope();
                         visitados.desapilar();
-                    
-                    }else{
-                
+                    } else {
                         System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
                     }
-
                     break;
                 case 3:
                     System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
