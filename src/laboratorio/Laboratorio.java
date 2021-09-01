@@ -20,6 +20,7 @@ public class Laboratorio {
 
         while (opcion != 3) {
 
+            System.out.println(carpetaActual);
             opcion = mostrarMenu();
 
             switch (opcion) {
@@ -34,14 +35,21 @@ public class Laboratorio {
                         visitados.apilar(carpetaActual);
                         carpetaActual = subcarpeta;
                         
-                        //Si es posible, se mostrarán los elementos de la subcarpeta
-                        System.out.println (carpetaActual);
                     } else {
                         //Si no existe subcarpeta, da error y desapila la carpeta actual
                         System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
                     }
                     break;
                 case 2:
+                    if (!visitados.esVacia()) {
+                      
+                        carpetaActual = (Carpeta) visitados.obtenerTope();
+                        visitados.desapilar();
+                    
+                    }else{
+                
+                        System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
+                    }
 
                     break;
                 case 3:
@@ -68,8 +76,6 @@ public class Laboratorio {
         if (item.exists()) {
 
             raiz = cargaPublica(item);
-
-            System.out.println(raiz.toString());
 
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
