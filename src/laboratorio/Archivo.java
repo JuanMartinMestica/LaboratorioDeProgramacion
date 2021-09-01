@@ -23,9 +23,10 @@ public class Archivo implements ItemArchivo {
 
     @Override
     public String toString() {
-        return "----- [Archivo] " + this.nombre + "| Peso: " + this.peso;
+        return "----- [Archivo] " + this.nombre + "| Peso: " + String.format("%.2f",this.peso / 1024);
     }
 
+    @Override
     public String mostrar() {
         return "[Archivo] " + this.nombre;
     }
