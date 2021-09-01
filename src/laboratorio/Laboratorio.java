@@ -2,27 +2,48 @@ package laboratorio;
 
 import java.io.File;
 import Utilidades.TecladoIn;
+import Utilidades.Pila;
 
 public class Laboratorio {
 
-    public static void main(String[] args) {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
 
+    public static void main(String[] args) {
+        
+        Pila visitados =new Pila();
         Carpeta raiz = cargaInicial();
-        String nombreCarpeta;
+        int opcion = -1;
+
         
-        System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
-        nombreCarpeta = TecladoIn.readLine();
-        
-        Carpeta subcarpeta = raiz.obtenerSubcarpeta(nombreCarpeta);
-        
-        System.out.println(subcarpeta.toString());
-        
+        while (opcion != 3) {
+
+            opcion = mostrarMenu();
+
+            switch (opcion) {
+                case 1:
+                    
+                    accederSubcarpeta(raiz);
+                    break;
+                case 2:
+    
+                    break;
+                case 3:
+                    System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+
     }
 
     public static Carpeta cargaInicial() {
 
         Carpeta raiz = null;
-        
+
         //Se especifica la ruta de la carpeta padre
         String path = "C:\\Users\\MARTIN\\Desktop";
 
@@ -35,14 +56,53 @@ public class Laboratorio {
             raiz = cargaPublica(item);
 
             System.out.println(raiz.toString());
-            System.out.println("Cant hijos inmediatos: " + raiz.getCantHijos());
 
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
         }
 
-      return raiz;  
-      
+        return raiz;
+
+    }
+
+    private static int mostrarMenu() {
+
+        int opcion;
+
+        System.out.print(" \n1- Ingresar a sub-carpeta. \n"
+                + "2- Volver a carpeta anterior \n"
+                + "3- Salir. \n");
+
+        System.out.print(ANSI_PURPLE + "Ingrese su opción: " + ANSI_RESET);
+        opcion = TecladoIn.readLineInt();
+
+        System.out.println("");
+        
+        return opcion;
+
+    }
+
+    private static boolean accederSubcarpeta(Carpeta padre) {
+
+        boolean exito = false;
+        
+        String nombreCarpeta;
+
+        System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
+        nombreCarpeta = TecladoIn.readLine();
+
+        Carpeta subcarpeta = padre.obtenerSubcarpeta(nombreCarpeta);
+        
+        if (subcarpeta != null) {
+            System.out.println(subcarpeta.toString());
+            exito = true;
+        } else {
+        
+            System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
+              
+        }
+
+        return exito;
     }
 
     private static Carpeta cargaPublica(File item) {
