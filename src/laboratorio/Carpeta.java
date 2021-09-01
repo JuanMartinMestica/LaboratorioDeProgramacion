@@ -59,16 +59,20 @@ public class Carpeta implements ItemArchivo {
         Carpeta subcarpeta = null;
 
         while (i < items.size() && seguir) {
-           
+
             if (items.get(i).getNombre().equals(nombreSubcarpeta)) {
 
                 seguir = false;
                 subcarpeta = (Carpeta) items.get(i);
-        
+
             }
             i++;
         }
-     
+
         return subcarpeta;
+    }
+
+    public ArrayList<ItemArchivo> getHijos() {
+        return this.items;
     }
 }
