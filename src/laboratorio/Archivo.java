@@ -19,7 +19,7 @@ public class Archivo implements ItemArchivo {
 
     @Override
     public String getNombre() {
-        return "----- [Archivo] " + this.nombre + "| Peso: " + this.peso;
+        return this.nombre;
     }
 
     @Override
