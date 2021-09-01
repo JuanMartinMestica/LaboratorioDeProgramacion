@@ -10,5 +10,6 @@ public interface ItemArchivo {
     public String getNombre();
     @Override
     public String toString();
+    public String mostrar();
     
 }
