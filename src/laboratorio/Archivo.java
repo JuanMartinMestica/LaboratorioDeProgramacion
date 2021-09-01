@@ -1,7 +1,6 @@
 package laboratorio;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
-
 public class Archivo implements ItemArchivo {
 
     String nombre;
@@ -25,5 +24,9 @@ public class Archivo implements ItemArchivo {
     @Override
     public String toString() {
         return "----- [Archivo] " + this.nombre + "| Peso: " + this.peso;
+    }
+
+    public String mostrar() {
+        return "[Archivo] " + this.nombre;
     }
 }
