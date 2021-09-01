@@ -2,6 +2,8 @@ package laboratorio;
 
 import java.util.ArrayList;
 
+/*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
+
 public class Carpeta implements ItemArchivo {
 
     String nombre;
