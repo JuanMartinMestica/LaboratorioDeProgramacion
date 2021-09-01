@@ -35,9 +35,10 @@ public class Laboratorio {
 
     private static void cargaRecursiva(Carpeta x, File item) {
 
-        //Si es una carpeta:
+        //Si es una carpeta
         if (item.isDirectory()) {
 
+            //Para cada uno de los hijos
             for (File items : item.listFiles()) {
 
                 if (items.isDirectory()) {
