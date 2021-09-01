@@ -12,10 +12,10 @@ public class Laboratorio {
 
     public static void cargaInicial() {
 
-        //Se obtiene la ruta de la carpeta padre
+        //Se especifica la ruta de la carpeta padre
         String path = "C:\\Users\\MARTIN\\Desktop";
 
-        //Se obtiene un item de tipo File, que será una carpeta o archivo
+        //Se crea un item de tipo File, que será una carpeta o archivo
         File item = new File(path, "Prueba");
 
         //Se verifica si existe el item
