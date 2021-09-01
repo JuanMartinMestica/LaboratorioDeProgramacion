@@ -12,23 +12,36 @@ public class Laboratorio {
     public static final String ANSI_PURPLE = "\u001B[35m";
 
     public static void main(String[] args) {
-        
-        Pila visitados =new Pila();
-        Carpeta raiz = cargaInicial();
+
+        Pila visitados = new Pila();
+        Carpeta carpetaActual = cargaInicial();
         int opcion = -1;
 
-        
         while (opcion != 3) {
 
             opcion = mostrarMenu();
 
             switch (opcion) {
                 case 1:
-                    
-                    accederSubcarpeta(raiz);
+
+                    Carpeta subcarpeta = accederSubcarpeta(carpetaActual);
+                   
+                    //Si existe la subcarpeta requerida
+                    if(subcarpeta != null) {
+                        
+                        //Se apila la carpeta padre 
+                        visitados.apilar(carpetaActual);
+                        carpetaActual = subcarpeta;
+                        
+                        //Si es posible, se mostrarán los elementos de la subcarpeta
+                        System.out.println (carpetaActual);
+                    } else {
+                        //Si no existe subcarpeta, da error y desapila la carpeta actual
+                        System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
+                    }
                     break;
                 case 2:
-    
+
                     break;
                 case 3:
                     System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
@@ -77,32 +90,21 @@ public class Laboratorio {
         opcion = TecladoIn.readLineInt();
 
         System.out.println("");
-        
+
         return opcion;
 
     }
 
-    private static boolean accederSubcarpeta(Carpeta padre) {
+    private static Carpeta accederSubcarpeta(Carpeta carpetaActual) {
 
-        boolean exito = false;
-        
         String nombreCarpeta;
 
         System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
         nombreCarpeta = TecladoIn.readLine();
 
-        Carpeta subcarpeta = padre.obtenerSubcarpeta(nombreCarpeta);
-        
-        if (subcarpeta != null) {
-            System.out.println(subcarpeta.toString());
-            exito = true;
-        } else {
-        
-            System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
-              
-        }
+        Carpeta subcarpeta = carpetaActual.obtenerSubcarpeta(nombreCarpeta);
 
-        return exito;
+        return subcarpeta;
     }
 
     private static Carpeta cargaPublica(File item) {
