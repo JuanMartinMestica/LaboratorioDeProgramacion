@@ -27,7 +27,7 @@ public class Carpeta implements ItemArchivo {
             msg += "--------" + item.mostrar() + "\n";
         }
 
-        msg += "Peso total de carpeta: " + this.getPeso();
+        msg += "Peso total de carpeta: " + this.getPeso() + " bytes.";
 
         return msg;
     }
