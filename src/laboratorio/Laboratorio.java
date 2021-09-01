@@ -1,17 +1,26 @@
 package laboratorio;
 
 import java.io.File;
+import Utilidades.TecladoIn;
 
 public class Laboratorio {
 
     public static void main(String[] args) {
 
-        cargaInicial();
-
+        Carpeta raiz = cargaInicial();
+        String nombreCarpeta;
+        
+        System.out.println("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
+        nombreCarpeta = TecladoIn.readLine();
+        
+        
+        
     }
 
-    public static void cargaInicial() {
+    public static Carpeta cargaInicial() {
 
+        Carpeta raiz = null;
+        
         //Se especifica la ruta de la carpeta padre
         String path = "C:\\Users\\MARTIN\\Desktop";
 
@@ -21,16 +30,17 @@ public class Laboratorio {
         //Se verifica si existe el item
         if (item.exists()) {
 
-            Carpeta raiz = cargaPublica(item);
+            raiz = cargaPublica(item);
 
             System.out.println(raiz.toString());
             System.out.println("Cant hijos inmediatos: " + raiz.getCantHijos());
-            System.out.println("Peso CARPETA RAIZ: " + raiz.getPeso() + " bytes");
 
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
         }
 
+      return raiz;  
+      
     }
 
     private static Carpeta cargaPublica(File item) {
