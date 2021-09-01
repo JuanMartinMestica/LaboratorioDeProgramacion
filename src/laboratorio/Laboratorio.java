@@ -10,10 +10,12 @@ public class Laboratorio {
         Carpeta raiz = cargaInicial();
         String nombreCarpeta;
         
-        System.out.println("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
+        System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
         nombreCarpeta = TecladoIn.readLine();
         
+        Carpeta subcarpeta = raiz.obtenerSubcarpeta(nombreCarpeta);
         
+        System.out.println(subcarpeta.toString());
         
     }
 
