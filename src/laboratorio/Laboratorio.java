@@ -21,11 +21,11 @@ public class Laboratorio {
         //Se verifica si existe el item
         if (item.exists()) {
 
-            Carpeta principal = cargaPublica(item);
+            Carpeta raiz = cargaPublica(item);
 
-            System.out.println(principal.toString());
-            System.out.println("Cant hijos inmediatos: " + principal.getCantHijos());
-            System.out.println("Peso CARPETA RAIZ: " + principal.getPeso() + " bytes");
+            System.out.println(raiz.toString());
+            System.out.println("Cant hijos inmediatos: " + raiz.getCantHijos());
+            System.out.println("Peso CARPETA RAIZ: " + raiz.getPeso() + " bytes");
 
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
