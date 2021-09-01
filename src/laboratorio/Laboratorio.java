@@ -21,11 +21,10 @@ public class Laboratorio {
         //Se verifica si existe el item
         if (item.exists()) {
 
-            Carpeta principal = new Carpeta(item.getName());
+            Carpeta principal = cargaPublica(item);
 
-            cargaRecursiva(principal, item);
-
-            System.out.println(principal);
+            System.out.println(principal.toString());
+            System.out.println("Cant hijos inmediatos: " + principal.getCantHijos());
 
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
@@ -33,31 +32,36 @@ public class Laboratorio {
 
     }
 
-    private static void cargaRecursiva(Carpeta x, File item) {
+    private static Carpeta cargaPublica(File item) {
+        Carpeta raiz;
 
-        //Si es una carpeta
-        if (item.isDirectory()) {
+        raiz = new Carpeta(item.getName());
+        cargaAux(raiz, item);
 
-            //Para cada uno de los hijos
-            for (File items : item.listFiles()) {
+        return raiz;
+    }
 
-                if (items.isDirectory()) {
+    private static void cargaAux(Carpeta visitado, File item) {
 
-                    Carpeta nuevaCarpeta = new Carpeta(items.getName());
-                    x.añadirItem(nuevaCarpeta);
-                }
+        for (File subElem : item.listFiles()) {
 
-                cargaRecursiva(x, items);
-                
+            //Si el subelemento es una carpeta, se crea una instancia de Carpeta
+            if (subElem.isDirectory()) {
+
+                Carpeta nuevaCarpeta = new Carpeta(subElem.getName());
+
+                cargaAux(nuevaCarpeta, subElem);
+
+                //Se añade la Carpeta a la Carpeta padre
+                visitado.añadirItem(nuevaCarpeta);
+
+            } else {
+                //Si el subelemento es un archivo, se crea una instancia de Archivo
+                Archivo nuevoArchivo = new Archivo(subElem.getName(), subElem.length());
+
+                //Se añade el Archivo a la Carpeta
+                visitado.añadirItem(nuevoArchivo);
             }
-        } else {
-
-            //Si es un archivo, se crea una instancia de archivo
-            Archivo nuevoArchivo = new Archivo(item.getName(), item.length());
-
-            //Se agrega el archivo a la carpeta que lo contiene
-            x.añadirItem(nuevoArchivo);
-
         }
     }
 
