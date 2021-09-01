@@ -15,7 +15,7 @@ public class Carpeta implements ItemArchivo {
 
     @Override
     public String getNombre() {
-        return this.nombre;
+        return "----- [Carpeta] " + this.nombre ;
     }
 
     @Override
@@ -24,10 +24,10 @@ public class Carpeta implements ItemArchivo {
         String msg = "[CARPETA] " + this.nombre + "\n";
 
         for (ItemArchivo item : items) {
-            msg += item.toString() + "\n";
+            msg += item.getNombre() + "\n";
         }
 
-        msg += "Peso total: " + this.getPeso();
+        msg += "Peso total de carpeta: " + this.getPeso();
 
         return msg;
     }
