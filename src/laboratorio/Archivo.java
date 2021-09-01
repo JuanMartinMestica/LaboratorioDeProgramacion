@@ -2,7 +2,6 @@ package laboratorio;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 
-//hOLAAAAAAAAAAAAAAAAAAAAAAAAAAA
 public class Archivo implements ItemArchivo {
 
     String nombre;
