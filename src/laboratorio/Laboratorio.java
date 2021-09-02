@@ -71,8 +71,9 @@ public class Laboratorio {
         //Se verifica si existe el item
         if (item.exists()) {
 
+            System.out.println("Se esta escaneando la carpeta, por favor espere...");
             raiz = cargaPublica(item);
-
+            System.out.println("Escaneo completo. \n\n");
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
         }
