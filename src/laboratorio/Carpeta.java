@@ -2,7 +2,6 @@ package laboratorio;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 public class Carpeta implements ItemArchivo {
