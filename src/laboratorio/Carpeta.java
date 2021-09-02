@@ -31,6 +31,19 @@ public class Carpeta implements ItemArchivo {
 
         return msg;
     }
+    
+      public String proto() {
+
+        String msg = "[Carpeta] " + this.nombre + "\n";
+
+        for (ItemArchivo item : items) {
+            msg += "--------" + item.mostrar() + "\n";
+        }
+
+        msg += "Peso total de carpeta: " + String.format("%.2f",this.getPeso() / 1024 / 1024) + " MB.";
+
+        return msg;
+    }
 
     @Override
     public double getPeso() {
