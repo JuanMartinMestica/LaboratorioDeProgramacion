@@ -1,6 +1,8 @@
 package laboratorio;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 public class Carpeta implements ItemArchivo {
@@ -27,12 +29,15 @@ public class Carpeta implements ItemArchivo {
             msg += "--------" + item.mostrar() + "\n";
         }
 
-        msg += "Peso total de carpeta: " + String.format("%.2f",this.getPeso() / 1024 / 1024) + " MB.";
+        msg += "Peso total de carpeta: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB.";
 
         return msg;
     }
-    
-      public String proto() {
+
+    public String proto() {
+
+        //Ordeno el ArrayList por tamaño
+        Collections.sort(items, (ItemArchivo item1, ItemArchivo item2) -> Double.valueOf(item2.getPeso()).compareTo(item1.getPeso()));
 
         String msg = "[Carpeta] " + this.nombre + "\n";
 
@@ -40,7 +45,7 @@ public class Carpeta implements ItemArchivo {
             msg += "--------" + item.mostrar() + "\n";
         }
 
-        msg += "Peso total de carpeta: " + String.format("%.2f",this.getPeso() / 1024 / 1024) + " MB.";
+        msg += "Peso total de carpeta: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB.";
 
         return msg;
     }
