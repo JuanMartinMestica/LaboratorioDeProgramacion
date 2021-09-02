@@ -6,6 +6,7 @@ public class Archivo implements ItemArchivo {
     String nombre;
     double peso;
 
+    //Constructor de archivo, con peso en bytes y nombre
     public Archivo(String nombre, double peso) {
         this.nombre = nombre;
         this.peso = peso;
