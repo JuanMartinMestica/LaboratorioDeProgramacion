@@ -41,7 +41,7 @@ public class Carpeta implements ItemArchivo {
         String msg = "[Carpeta] " + this.nombre + "\n";
 
         for (ItemArchivo item : items) {
-            msg += "--------" + item.mostrar() + " | TAM: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB." + "\n";
+            msg += "--------" + item.mostrar() + " | TAM: " + String.format("%.2f", item.getPeso() / 1024 / 1024) + " MB." + "\n";
         }
 
         msg += "Peso total de carpeta: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB.";
