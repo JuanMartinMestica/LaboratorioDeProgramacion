@@ -20,7 +20,7 @@ public class Laboratorio {
 
         while (opcion != 3) {
 
-            System.out.println(carpetaActual);
+            System.out.println(carpetaActual.proto());
             opcion = mostrarMenu();
 
             switch (opcion) {
