@@ -13,6 +13,7 @@ public class Archivo implements ItemArchivo {
     }
 
     @Override
+    //Devuelve el peso en bytes del Archivo
     public double getPeso() {
         return this.peso;
     }
