@@ -22,19 +22,6 @@ public class Carpeta implements ItemArchivo {
     @Override
     public String toString() {
 
-        String msg = "[Carpeta] " + this.nombre + "\n";
-
-        for (ItemArchivo item : items) {
-            msg += "--------" + item.mostrar() + "\n";
-        }
-
-        msg += "Peso total de carpeta: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB.";
-
-        return msg;
-    }
-
-    public String proto() {
-
         //Ordeno el ArrayList por tamaño
         Collections.sort(items, (ItemArchivo item1, ItemArchivo item2) -> Double.valueOf(item2.getPeso()).compareTo(item1.getPeso()));
 
