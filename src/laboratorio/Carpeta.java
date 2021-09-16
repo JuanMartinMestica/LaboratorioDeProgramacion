@@ -6,8 +6,8 @@ import java.util.Collections;
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 public class Carpeta implements ItemArchivo {
 
-    String nombre;
-    ArrayList<ItemArchivo> items;
+    private String nombre;
+    private ArrayList<ItemArchivo> items;
 
     public Carpeta(String nombre) {
         this.nombre = nombre;
