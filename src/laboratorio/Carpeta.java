@@ -1,12 +1,13 @@
 package laboratorio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*Laboratorio de Programación - Fernando Iraira - Juan Mestica*/
 public class Carpeta implements ItemArchivo {
 
-    String nombre;
-    ArrayList<ItemArchivo> items;
+    private String nombre;
+    private ArrayList<ItemArchivo> items;
 
     public Carpeta(String nombre) {
         this.nombre = nombre;
@@ -21,13 +22,16 @@ public class Carpeta implements ItemArchivo {
     @Override
     public String toString() {
 
+        //Ordeno el ArrayList por tamaño
+        Collections.sort(items, (ItemArchivo item1, ItemArchivo item2) -> Double.valueOf(item2.getPeso()).compareTo(item1.getPeso()));
+
         String msg = "[Carpeta] " + this.nombre + "\n";
 
         for (ItemArchivo item : items) {
-            msg += "--------" + item.mostrar() + "\n";
+            msg += "--------" + item.mostrar() + " | TAM: " + String.format("%.2f", item.getPeso() / 1024 / 1024) + " MB." + "\n";
         }
 
-        msg += "Peso total de carpeta: " + String.format("%.2f",this.getPeso() / 1024 / 1024) + " MB.";
+        msg += "Peso total de carpeta: " + String.format("%.2f", this.getPeso() / 1024 / 1024) + " MB.";
 
         return msg;
     }

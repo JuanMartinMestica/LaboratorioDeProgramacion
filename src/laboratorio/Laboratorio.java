@@ -18,43 +18,44 @@ public class Laboratorio {
         Carpeta carpetaActual = cargaInicial();
         int opcion = -1;
 
-        while (opcion != 3) {
+        if (carpetaActual != null) {
+            while (opcion != 3) {
 
-            System.out.println(carpetaActual);
-            opcion = mostrarMenu();
+                System.out.println(carpetaActual.toString());
+                opcion = mostrarMenu();
 
-            switch (opcion) {
-                case 1:
+                switch (opcion) {
+                    case 1:
 
-                    Carpeta subcarpeta = accederSubcarpeta(carpetaActual);
+                        Carpeta subcarpeta = accederSubcarpeta(carpetaActual);
 
-                    //Si existe la subcarpeta requerida
-                    if (subcarpeta != null) {
-                        //Se apila la carpeta padre 
-                        visitados.apilar(carpetaActual);
-                        carpetaActual = subcarpeta;
+                        //Si existe la subcarpeta requerida
+                        if (subcarpeta != null) {
+                            //Se apila la carpeta padre 
+                            visitados.apilar(carpetaActual);
+                            carpetaActual = subcarpeta;
 
-                    } else {
-                        //Si no existe subcarpeta, da error y desapila la carpeta actual
-                        System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
-                    }
-                    break;
-                case 2:
-                    if (!visitados.esVacia()) {
-                        carpetaActual = (Carpeta) visitados.obtenerTope();
-                        visitados.desapilar();
-                    } else {
-                        System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
-                    }
-                    break;
-                case 3:
-                    System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
-                    break;
-                default:
-                    throw new AssertionError();
+                        } else {
+                            //Si no existe subcarpeta, da error y desapila la carpeta actual
+                            System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
+                        }
+                        break;
+                    case 2:
+                        if (!visitados.esVacia()) {
+                            carpetaActual = (Carpeta) visitados.obtenerTope();
+                            visitados.desapilar();
+                        } else {
+                            System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
+                        }
+                        break;
+                    case 3:
+                        System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
             }
         }
-
     }
 
     public static Carpeta cargaInicial() {
@@ -62,7 +63,7 @@ public class Laboratorio {
         Carpeta raiz = null;
 
         //Se especifica la ruta de la carpeta padre
-        String path = "C:\\Users\\MARTIN\\Desktop";
+        String path = "C:\\Users\\Fernando\\Desktop";
 
         //Se crea un item de tipo File, que será una carpeta o archivo
         File item = new File(path, "Prueba");
@@ -70,8 +71,9 @@ public class Laboratorio {
         //Se verifica si existe el item
         if (item.exists()) {
 
+            System.out.println("Se esta escaneando la carpeta, por favor espere...");
             raiz = cargaPublica(item);
-
+            System.out.println("Escaneo completo. \n\n");
         } else {
             System.out.println("ERROR: No existe archivo-carpeta en la ruta dada.");
         }
