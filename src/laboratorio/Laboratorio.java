@@ -21,7 +21,7 @@ public class Laboratorio {
         if (carpetaActual != null) {
             while (opcion != 3) {
 
-                System.out.println(carpetaActual.proto());
+                System.out.println(carpetaActual.toString());
                 opcion = mostrarMenu();
 
                 switch (opcion) {
@@ -63,7 +63,7 @@ public class Laboratorio {
         Carpeta raiz = null;
 
         //Se especifica la ruta de la carpeta padre
-        String path = "C:\\Users\\MARTIN\\Desktop";
+        String path = "C:\\Users\\Fernando\\Desktop";
 
         //Se crea un item de tipo File, que será una carpeta o archivo
         File item = new File(path, "Prueba");
