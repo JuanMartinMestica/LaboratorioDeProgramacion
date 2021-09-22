@@ -13,9 +13,9 @@ public class Laboratorio {
     public static final String ANSI_PURPLE = "\u001B[35m";
 
     public static void main(String[] args) {
-
-        Pila visitados = new Pila();
-        Carpeta carpetaActual = cargaInicial();
+        String path = "C:\\Users\\Fernando\\Desktop", filename = "Prueba";
+        Explorador exp = new Explorador(path, filename);
+        Carpeta carpetaActual = exp.cargaInicial();
         int opcion = -1;
 
         if (carpetaActual != null) {
@@ -26,27 +26,10 @@ public class Laboratorio {
 
                 switch (opcion) {
                     case 1:
-
-                        Carpeta subcarpeta = accederSubcarpeta(carpetaActual);
-
-                        //Si existe la subcarpeta requerida
-                        if (subcarpeta != null) {
-                            //Se apila la carpeta padre 
-                            visitados.apilar(carpetaActual);
-                            carpetaActual = subcarpeta;
-
-                        } else {
-                            //Si no existe subcarpeta, da error y desapila la carpeta actual
-                            System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
-                        }
+                        carpetaActual = exp.accederSubcarpeta();
                         break;
                     case 2:
-                        if (!visitados.esVacia()) {
-                            carpetaActual = (Carpeta) visitados.obtenerTope();
-                            visitados.desapilar();
-                        } else {
-                            System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
-                        }
+                        carpetaActual = exp.subirNivel();
                         break;
                     case 3:
                         System.out.println(ANSI_RED + "Saliendo.." + ANSI_RESET);
