@@ -95,11 +95,11 @@ public class Explorador {
             //Se apila la carpeta padre 
             visitados.apilar(carpetaActual);
             carpetaActual = aux;
-
         } else {
             //Si no existe subcarpeta, da error y desapila la carpeta actual
             System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
         }
+
         return carpetaActual;
     }
 }
