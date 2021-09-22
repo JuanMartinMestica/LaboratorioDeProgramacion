@@ -102,4 +102,15 @@ public class Explorador {
 
         return carpetaActual;
     }
+
+    public Carpeta subirNivel() {
+        if (!visitados.esVacia()) {
+            carpetaActual = (Carpeta) visitados.obtenerTope();
+            visitados.desapilar();
+        } else {
+            System.out.println(ANSI_RED + "Se encuentra en la carpeta raíz, no puede retroceder. " + ANSI_RESET);
+        }
+
+        return carpetaActual;
+    }
 }
