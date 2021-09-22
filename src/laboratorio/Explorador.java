@@ -43,4 +43,12 @@ public class Explorador {
         return raiz;
 
     }
+
+    private Carpeta cargaPublica(File item) {
+
+        raiz = new Carpeta(item.getName());
+        cargaAux(raiz, item);
+
+        return raiz;
+    }
 }
