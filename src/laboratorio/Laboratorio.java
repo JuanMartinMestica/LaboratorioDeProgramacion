@@ -1,8 +1,6 @@
 package laboratorio;
 
-import java.io.File;
 import Utilidades.TecladoIn;
-import Utilidades.Pila;
 
 public class Laboratorio {
 
