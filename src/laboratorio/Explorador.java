@@ -81,7 +81,7 @@ public class Explorador {
         }
     }
 
-    private Carpeta accederSubcarpeta() {
+    public Carpeta accederSubcarpeta() {
         String nombreCarpeta;
         Carpeta aux;
 
