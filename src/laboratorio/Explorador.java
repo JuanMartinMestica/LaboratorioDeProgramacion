@@ -17,18 +17,18 @@ public class Explorador {
     Pila visitados;
     Carpeta carpetaActual;
     Carpeta raiz;
+    String path, filename;
 
-    public Explorador() {
+    public Explorador(String path, String filename) {
         visitados = new Pila();
+        this.path = path;
+        this.filename = filename;
     }
 
     public Carpeta cargaInicial() {
 
-        //Se especifica la ruta de la carpeta padre
-        String path = "C:\\Users\\Fernando\\Desktop";
-
         //Se crea un item de tipo File, que será una carpeta o archivo
-        File item = new File(path, "Prueba");
+        File item = new File(path, filename);
 
         //Se verifica si existe el item
         if (item.exists()) {
