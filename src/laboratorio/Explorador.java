@@ -15,6 +15,12 @@ import java.io.File;
  */
 public class Explorador {
 
+    //Variables globales para prints
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+
     Pila visitados;
     Carpeta carpetaActual;
     Carpeta raiz;
@@ -77,12 +83,23 @@ public class Explorador {
 
     private Carpeta accederSubcarpeta() {
         String nombreCarpeta;
+        Carpeta aux;
 
         System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
         nombreCarpeta = TecladoIn.readLine();
 
-        this.carpetaActual = carpetaActual.obtenerSubcarpeta(nombreCarpeta);
+        aux = carpetaActual.obtenerSubcarpeta(nombreCarpeta);
 
+        //Si existe la subcarpeta requerida
+        if (aux != null) {
+            //Se apila la carpeta padre 
+            visitados.apilar(carpetaActual);
+            carpetaActual = aux;
+
+        } else {
+            //Si no existe subcarpeta, da error y desapila la carpeta actual
+            System.out.println(ANSI_RED + "No se encontró ninguna carpeta con ese nombre " + ANSI_RESET);
+        }
         return carpetaActual;
     }
 }
