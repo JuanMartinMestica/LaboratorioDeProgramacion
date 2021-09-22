@@ -6,6 +6,7 @@
 package laboratorio;
 
 import Utilidades.Pila;
+import Utilidades.TecladoIn;
 import java.io.File;
 
 /**
@@ -44,15 +45,14 @@ public class Explorador {
     }
 
     private Carpeta cargaPublica(File item) {
-
         raiz = new Carpeta(item.getName());
         cargaAux(raiz, item);
 
+        this.carpetaActual = raiz;
         return raiz;
     }
 
     private static void cargaAux(Carpeta visitado, File item) {
-
         for (File subElem : item.listFiles()) {
 
             //Si el subelemento es una carpeta, se crea una instancia de Carpeta
@@ -73,5 +73,16 @@ public class Explorador {
                 visitado.añadirItem(nuevoArchivo);
             }
         }
+    }
+
+    private Carpeta accederSubcarpeta() {
+        String nombreCarpeta;
+
+        System.out.print("Ingrese el nombre de la carpeta a la que quiere ingresar: ");
+        nombreCarpeta = TecladoIn.readLine();
+
+        this.carpetaActual = carpetaActual.obtenerSubcarpeta(nombreCarpeta);
+
+        return carpetaActual;
     }
 }
