@@ -41,7 +41,6 @@ public class Explorador {
         }
 
         return raiz;
-
     }
 
     private Carpeta cargaPublica(File item) {
@@ -50,5 +49,29 @@ public class Explorador {
         cargaAux(raiz, item);
 
         return raiz;
+    }
+
+    private static void cargaAux(Carpeta visitado, File item) {
+
+        for (File subElem : item.listFiles()) {
+
+            //Si el subelemento es una carpeta, se crea una instancia de Carpeta
+            if (subElem.isDirectory()) {
+
+                Carpeta nuevaCarpeta = new Carpeta(subElem.getName());
+
+                cargaAux(nuevaCarpeta, subElem);
+
+                //Se añade la Carpeta a la Carpeta padre
+                visitado.añadirItem(nuevaCarpeta);
+
+            } else {
+                //Si el subelemento es un archivo, se crea una instancia de Archivo
+                Archivo nuevoArchivo = new Archivo(subElem.getName(), subElem.length());
+
+                //Se añade el Archivo a la Carpeta
+                visitado.añadirItem(nuevoArchivo);
+            }
+        }
     }
 }
