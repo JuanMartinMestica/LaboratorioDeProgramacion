@@ -16,4 +16,11 @@ public class Explorador {
     Pila visitados;
     Carpeta carpetaActual;
 
+    public Explorador() {
+        visitados = new Pila();
+    }
+
+    public Carpeta cargaInicial() {
+
+    }
 }
